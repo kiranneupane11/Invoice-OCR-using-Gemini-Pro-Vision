@@ -7,19 +7,26 @@ Input:
 
 Output: 
 
-{
-  "NUDE Seafood": {
-    "GST Reg No": "201423107N",
-    "Page": "3",
-    "Pax": "3",
-    "Pos": "002",
-    "Table": "50",
-    "Receipt": "A16000046309",
-    "Date": "29/06/2016",
-    "Time": "19:36",
-    "Cashier": "Nicholas",
-    "Items": [
-      | Name | Quantity | Price |
+**NUDE Seafood**
+================
+
+**Order Details**
+----------------
+
+* **GST Reg No**: 201423107N
+* **Page**: 3
+* **Pax**: 3
+* **Pos**: 002
+* **Table**: 50
+* **Receipt**: A16000046309
+* **Date**: 29/06/2016
+* **Time**: 19:36
+* **Cashier**: Nicholas
+
+**Items**
+--------
+
+| Name | Quantity | Price |
 | --- | --- | --- |
 | Barramundi Filet | 1 | $22.00 |
 | Blackcurrant | 1 | $4.67 |
@@ -29,10 +36,9 @@ Output:
 | Oyster Pair | 1 | $13.00 |
 | Scallop Carpaccio | 1 | $19.00 |
 | Pinot Burg Gls | 2 | $28.00 |
-    "Sub Total": "159.26",
-    "10% Svc Chrg": "15.93",
-    "7% GST": "12.26",
-    "Total": "187.40",
-    "VISA": "187.40"
-  }
-}
+
+**Sub Total**: $159.26
+**10% Svc Chrg**: $15.93
+**7% GST**: $12.26
+**Total**: $187.40
+**VISA**: $187.40
