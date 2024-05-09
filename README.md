@@ -38,7 +38,11 @@ Output:
 | Pinot Burg Gls | 2 | $28.00 |
 
 **Sub Total**: $159.26
+
 **10% Svc Chrg**: $15.93
+
 **7% GST**: $12.26
+
 **Total**: $187.40
+
 **VISA**: $187.40
