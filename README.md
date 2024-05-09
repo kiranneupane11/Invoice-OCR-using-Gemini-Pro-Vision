@@ -1,7 +1,10 @@
 # Invoice-OCR-using-Gemini-Pro-Vision
 
 ## Result
-Input: ![image](https://github.com/kiranneupane11/Invoice-OCR-using-Gemini-Pro-Vision/assets/56816182/4bdb9016-426c-43ea-9009-f05a5e07458d)
+Input: 
+
+![image](https://github.com/kiranneupane11/Invoice-OCR-using-Gemini-Pro-Vision/assets/56816182/4bdb9016-426c-43ea-9009-f05a5e07458d)
+
 Output: {
   "NUDE Seafood": {
     "GST Reg No": "201423107N",
