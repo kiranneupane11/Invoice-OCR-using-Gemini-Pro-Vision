@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice OCR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #upload-form {
+            margin: 20px;
+        }
+        #image-upload {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #result-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #result-table th, #result-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        #image-preview {
+            margin: 20px;
+            width: 50%;
+            height: 50vh;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            object-fit: contain;
+        }
+        #loading-animation {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice OCR</h1>
+    <form id="upload-form">
+        <input type="file" id="image-upload" name="image" accept="image/*">
+        <button type="submit">Extract Data</button>
+    </form>
+    <div id="image-preview-container">
+        <img id="image-preview" src="" alt="Image Preview">
+    </div>
+    <div id="loading-animation" style="display: none;">Extracting Information...</div>
+    <div id="result-container">
+        <table id="result-table"></table>
+    </div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const tableContainer = document.getElementById('result-container');
+        const imagePreviewContainer = document.getElementById('image-preview-container');
+        const imagePreview = document.getElementById('image-preview');
+        const loadingAnimation = document.getElementById('loading-animation');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('image-upload');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                const base64String = reader.result;
+                const imageData = {
+                    image: base64String.split(',')[1]
+                };
+
+                // Display image preview
+                imagePreview.src = base64String;
+
+                // Show loading animation
+                loadingAnimation.style.display = 'block';
+
+                fetch('http://127.0.0.1:5000/ocr', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(imageData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading animation
+                    loadingAnimation.style.display = 'none';
+
+                    const table = document.getElementById('result-table');
+                    table.innerHTML = '';
+                    const responseText = data.response;
+                    const tableRow = document.createElement('tr');
+                    const tableData = document.createElement('td');
+                    tableData.textContent = responseText;
+                    tableRow.appendChild(tableData);
+                    table.appendChild(tableRow);
+                })
+                .catch(error => console.error(error));
+            };
+        });
+    </script>
+</body>
+</html>
